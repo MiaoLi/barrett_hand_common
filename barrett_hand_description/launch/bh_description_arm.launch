@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<launch>
+	<arg name="robot_name" default="bhand"/>
+    <param name="robot_description"
+    command="$(find xacro)/xacro.py '$(find barrett_hand_description)/robots/bh_alone_soft.urdf.xacro'" />
+   <!-- Send fake joint values -->
+  <node name="bhand_joint_publisher" pkg="joint_state_publisher" type="joint_state_publisher">
+  <param name="use_gui" value="true"/> 
+  </node>
+
+  <!-- Combine joint values -->
+  <node name="bhand_state_publisher" pkg="robot_state_publisher" type="state_publisher" />
+
+
+</launch>
